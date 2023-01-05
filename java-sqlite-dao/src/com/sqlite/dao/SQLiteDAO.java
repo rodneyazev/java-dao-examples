@@ -17,7 +17,6 @@ public class SQLiteDAO {
 		try {
 			Connection connection = this.getConnection();
 			Statement statement = connection.createStatement();		
-			
 			statement.execute("CREATE TABLE APPLICATION(ID INTEGER, NOME VARCHAR(255))");
 			System.out.println("Table created successfully");
 		} catch (SQLException e) {e.printStackTrace();}
@@ -27,7 +26,6 @@ public class SQLiteDAO {
 		try {
 			Connection connection = new SQLiteDAO().getConnection();
 			PreparedStatement statement = connection.prepareStatement("INSERT INTO APPLICATION(ID, NOME) VALUES(?,?)");
-		
 			statement.setInt(1, id);
 			statement.setString(2, nome);
 			statement.execute();
@@ -40,15 +38,12 @@ public class SQLiteDAO {
 		try {
 			Connection connection = new SQLiteDAO().getConnection();
 			PreparedStatement statement = connection.prepareStatement("SELECT * FROM APPLICATION");
-			
 			ResultSet resultset = statement.executeQuery();
-			
-				while (resultset.next()) {
-					int id = resultset.getInt("id");
-			        String nome = resultset.getString("nome");
-			        System.out.println("ID: " + id + "\tNome: " + nome);
-				}
-				
+			while (resultset.next()) {
+				int id = resultset.getInt("id");
+			    String nome = resultset.getString("nome");
+			    System.out.println("ID: " + id + "\tNome: " + nome);
+			}
 			resultset.close();
 			statement.close();
 			connection.close();
@@ -57,29 +52,24 @@ public class SQLiteDAO {
 	
 	public void sqlUpdate(int id, String nome) {
 		try {
-		Connection connection = new SQLiteDAO().getConnection();
-		PreparedStatement statement = connection.prepareStatement("UPDATE APPLICATION SET NOME=? WHERE ID=?");
-		
-		statement.setString(1, nome);
-		statement.setInt(2, id);		
-		statement.execute();
-		
-		statement.close();
-		connection.close();
+			Connection connection = new SQLiteDAO().getConnection();
+			PreparedStatement statement = connection.prepareStatement("UPDATE APPLICATION SET NOME=? WHERE ID=?");
+			statement.setString(1, nome);
+			statement.setInt(2, id);		
+			statement.execute();
+			
+			statement.close();
+			connection.close();
 		} catch (SQLException e) {e.printStackTrace();}
 	}
 	
 	public void sqlDelete(int id) {
 		try {
 			Connection connection;
-		
 			connection = new SQLiteDAO().getConnection();
-		
 			PreparedStatement statement = connection.prepareStatement("DELETE FROM APPLICATION WHERE ID=?");
-			
 			statement.setInt(1, id);		
 			statement.execute();
-			
 			statement.close();
 			connection.close();
 		} catch (SQLException e) {e.printStackTrace();}

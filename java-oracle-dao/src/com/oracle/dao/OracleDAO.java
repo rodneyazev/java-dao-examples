@@ -18,10 +18,8 @@ public class OracleDAO {
 			Connection connection;
 			connection = this.getConnection();
 			Statement statement = connection.createStatement();
-			
 			statement.execute("CREATE TABLE ORACLETABLE(ID INTEGER, NAME VARCHAR(255))");
 			System.out.println("Table created successfully");
-			
 			statement.close();
 			connection.close();
 		} catch (SQLException e) {e.printStackTrace();}
@@ -31,11 +29,9 @@ public class OracleDAO {
 		try {
 			Connection connection = new OracleDAO().getConnection();
 			PreparedStatement statement = connection.prepareStatement("INSERT INTO ORACLETABLE (ID, NAME) VALUES(?,?)");
-			
 			statement.setInt(1, id);
 			statement.setString(2, name);		
 			statement.execute();
-			
 			statement.close();
 			connection.close();
 		} catch (SQLException e) {e.printStackTrace();}
@@ -46,13 +42,11 @@ public class OracleDAO {
 			Connection connection = new OracleDAO().getConnection();
 			PreparedStatement statement = connection.prepareStatement("SELECT * FROM ORACLETABLE");
 			ResultSet resultset = statement.executeQuery();
-			
-				while (resultset.next()) {
-					int id = resultset.getInt("id");
-			        String name = resultset.getString("name");
-			        System.out.println("ID: " + id + "\tNome: " + name);
-				}
-				
+			while (resultset.next()) {
+				int id = resultset.getInt("id");
+			    String name = resultset.getString("name");
+			    System.out.println("ID: " + id + "\tNome: " + name);
+			}
 			resultset.close();
 			statement.close();
 			connection.close();
@@ -63,11 +57,9 @@ public class OracleDAO {
 		try {
 			Connection connection = new OracleDAO().getConnection();
 			PreparedStatement statement = connection.prepareStatement("UPDATE ORACLETABLE SET NAME=? WHERE ID=?");
-			
 			statement.setString(1, nome);
 			statement.setInt(2, id);		
 			statement.execute();
-			
 			statement.close();
 			connection.close();
 		} catch (SQLException e) {e.printStackTrace();}
@@ -77,10 +69,8 @@ public class OracleDAO {
 		try {
 			Connection connection = new OracleDAO().getConnection();
 			PreparedStatement statement = connection.prepareStatement("DELETE FROM ORACLETABLE WHERE ID=?");
-			
 			statement.setInt(1, id);		
 			statement.execute();
-			
 			statement.close();
 			connection.close();
 		} catch (SQLException e) {e.printStackTrace();}

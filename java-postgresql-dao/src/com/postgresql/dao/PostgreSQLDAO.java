@@ -18,10 +18,8 @@ public class PostgreSQLDAO {
 			Connection connection;
 			connection = this.getConnection();
 			Statement statement = connection.createStatement();
-			
 			statement.execute("CREATE TABLE SQLITE(ID INTEGER, NAME VARCHAR(255))");
 			System.out.println("Table created successfully");
-			
 			statement.close();
 			connection.close();
 		} catch (SQLException e) {e.printStackTrace();}		
@@ -31,11 +29,9 @@ public class PostgreSQLDAO {
 		try {
 			Connection connection = new PostgreSQLDAO().getConnection();
 			PreparedStatement statement = connection.prepareStatement("INSERT INTO SQLITE (ID, NAME) VALUES(?,?)");
-			
 			statement.setInt(1, id);
 			statement.setString(2, name);		
 			statement.execute();
-			
 			statement.close();
 			connection.close();
 		} catch (SQLException e) {e.printStackTrace();}
@@ -46,13 +42,11 @@ public class PostgreSQLDAO {
 			Connection connection = new PostgreSQLDAO().getConnection();
 			PreparedStatement statement = connection.prepareStatement("SELECT * FROM SQLITE");
 			ResultSet resultset = statement.executeQuery();
-			
-				while (resultset.next()) {
-					int id = resultset.getInt("id");
-			        String name = resultset.getString("name");
-			        System.out.println("ID: " + id + "\tNome: " + name);
-				}
-				
+			while (resultset.next()) {
+				int id = resultset.getInt("id");
+			    String name = resultset.getString("name");
+			    System.out.println("ID: " + id + "\tNome: " + name);
+			}
 			resultset.close();
 			statement.close();
 			connection.close();
@@ -64,11 +58,9 @@ public class PostgreSQLDAO {
 		try {
 			Connection connection = new PostgreSQLDAO().getConnection();
 			PreparedStatement statement = connection.prepareStatement("UPDATE SQLITE SET NAME=? WHERE ID=?");
-			
 			statement.setString(1, nome);
 			statement.setInt(2, id);		
 			statement.execute();
-			
 			statement.close();
 			connection.close();
 		} catch (SQLException e) {e.printStackTrace();}
@@ -78,10 +70,8 @@ public class PostgreSQLDAO {
 		try {
 			Connection connection = new PostgreSQLDAO().getConnection();
 			PreparedStatement statement = connection.prepareStatement("DELETE FROM SQLITE WHERE ID=?");
-			
 			statement.setInt(1, id);		
 			statement.execute();
-			
 			statement.close();
 			connection.close();
 		} catch (SQLException e) {e.printStackTrace();}
