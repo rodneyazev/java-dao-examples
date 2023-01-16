@@ -13,6 +13,7 @@ public class PostgreSQL {
 		PostgreSQLDAO postgreSQLDAO = new PostgreSQLDAO();
 		
 		// postgreSQLDAO.createTable();
+		
 		postgreSQLDAO.deleteData(1);
 		postgreSQLDAO.deleteData(2);
 		

@@ -10,7 +10,7 @@ import java.sql.Statement;
 public class PostgreSQLDAO {
 	
 	public Connection getConnection() throws SQLException {
-		return DriverManager.getConnection("jdbc:postgresql://localhost/postgres?user=postgres&password=postgres123&ssl=true\";");
+		return DriverManager.getConnection("jdbc:postgresql://localhost/postgres?user=postgres&password=postgres&ssl=true\";");
 	}
 	
 	public void createTable() {

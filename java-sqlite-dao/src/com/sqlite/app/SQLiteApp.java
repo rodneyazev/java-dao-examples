@@ -11,7 +11,7 @@ public class SQLiteApp {
 
 		SQLiteDAO sql = new SQLiteDAO();
 		
-		// sql.sqlCreate();
+		// sql.sqlCreate();		
 		
 		sql.sqlDelete(1);
 		sql.sqlDelete(2);

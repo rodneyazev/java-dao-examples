@@ -12,7 +12,6 @@ public class OracleDAO {
 		return DriverManager.getConnection("jdbc:oracle:thin:@192.168.109.142:1521:xe", "SYSTEM", "it.@#$");
 	}
 	
-	
 	public void createTable() {
 		try {
 			Connection connection;

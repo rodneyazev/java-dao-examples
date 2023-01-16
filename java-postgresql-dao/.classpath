@@ -6,6 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="D:/Projetos/Git/spring-projects/java-postgresql-dao/lib/postgresql.jar"/>
+	<classpathentry kind="lib" path="C:/Users/votc/Documents/Rodney/Projects/spring/spring-java-dao-examples/java-postgresql-dao/lib/postgresql.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
